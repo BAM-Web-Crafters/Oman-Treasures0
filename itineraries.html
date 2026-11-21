@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Itineraries - Oman Treasures</title>
+    <!-- Bootstrap 5 CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light text-dark d-flex flex-column min-vh-100">
+
+    <!-- Responsive Navigation Bar -->
+    <!-- Responsive Navigation Bar (Unified 11 Links, Single-Line Labels) -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top shadow-sm">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center gap-2 fw-bold text-warning text-nowrap" href="index.html">
+                <img src="images/logo.png" alt="Oman Treasures Logo" width="38" height="38" class="rounded-circle bg-white p-1">
+                <span>Oman Treasures</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="mainNavbar">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center gap-lg-1">
+                    <li class="nav-item"><a class="nav-link text-nowrap px-lg-2 small" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link text-nowrap px-lg-2 small" href="destinations.html">Destinations</a></li>
+                    <li class="nav-item"><a class="nav-link text-nowrap px-lg-2 small" href="gallery.html">Gallery</a></li>
+                    <li class="nav-item"><a class="nav-link text-nowrap px-lg-2 small" active href="itineraries.html">Itineraries</a></li>
+                    <li class="nav-item"><a class="nav-link text-nowrap px-lg-2 small" href="forms.html">Forms</a></li>
+                    <li class="nav-item"><a class="nav-link text-nowrap px-lg-2 small" href="add-gem.html">Add Gem</a></li>
+                    <li class="nav-item"><a class="nav-link text-nowrap px-lg-2 small" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link text-nowrap px-lg-2 small" href="contact.html">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link text-nowrap px-lg-2 small text-info fw-semibold" href="questionnaire.html">Questionnaire</a></li>
+                    <li class="nav-item"><a class="nav-link text-nowrap px-lg-2 small text-info fw-semibold" href="calculate.html">Calculator</a></li>
+                    <li class="nav-item"><a class="nav-link text-nowrap px-lg-2 small text-info fw-semibold" href="funpage.html">Fun Page</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container my-4 flex-grow-1">
+        <!-- Page Header -->
+        <div class="p-4 mb-4 rounded-3 bg-white border shadow-sm">
+            <h1 class="h2 fw-bold text-primary mb-2">Recommended Travel Itineraries</h1>
+            <p class="text-secondary mb-0">
+                Explore curated multi-day Omani travel stops dynamically, add new stops, or search by day, activity, or governorate.
+            </p>
+        </div>
+
+        <!-- Add Stop & Search Forms Row -->
+        <div class="row g-4 mb-4">
+            <!-- Add New Itinerary Stop Form -->
+            <div class="col-lg-7">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-header bg-primary text-white fw-semibold">
+                        Add New Itinerary Stop
+                    </div>
+                    <div class="card-body">
+                        <form id="addItineraryForm" class="row g-3 needs-validation" novalidate>
+                            <div class="col-md-4">
+                                <label for="itinDay" class="form-label fw-semibold">Day</label>
+                                <input type="text" class="form-control" id="itinDay" placeholder="e.g. Day 1, Day 4" required>
+                                <div class="invalid-feedback">Please enter the day.</div>
+                            </div>
+                            <div class="col-md-8">
+                                <label for="itinTimeSlot" class="form-label fw-semibold">Time Slot</label>
+                                <input type="text" class="form-control" id="itinTimeSlot" placeholder="e.g. 08:00 AM - 11:00 AM" required>
+                                <div class="invalid-feedback">Please enter the time slot.</div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="itinActivity" class="form-label fw-semibold">Activity / Destination</label>
+                                <input type="text" class="form-control" id="itinActivity" placeholder="e.g. Nizwa Fort & Souq" required>
+                                <div class="invalid-feedback">Please enter the activity or destination.</div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="itinGovernorate" class="form-label fw-semibold">Governorate</label>
+                                <input type="text" class="form-control" id="itinGovernorate" placeholder="e.g. A'Dakhiliyah" required>
+                                <div class="invalid-feedback">Please enter the governorate.</div>
+                            </div>
+                            <div class="col-12">
+                                <label for="itinNotes" class="form-label fw-semibold">Notes & Advice</label>
+                                <input type="text" class="form-control" id="itinNotes" placeholder="e.g. 4WD vehicle required, bring water" required>
+                                <div class="invalid-feedback">Please enter notes or travel advice.</div>
+                            </div>
+                            <div class="col-12">
+                                <button type="submit" class="btn btn-success fw-semibold">Add to Itinerary Table</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Search Itineraries Form -->
+            <div class="col-lg-5">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-header bg-dark text-white fw-semibold">
+                        Search Itinerary Stops
+                    </div>
+                    <div class="card-body d-flex flex-column justify-content-between">
+                        <div>
+                            <label for="searchItineraryInput" class="form-label fw-semibold">
+                                Search by Day, Time, Activity, Governorate, or Notes
+                            </label>
+                            <div class="input-group mb-3">
+                                <input type="text" class="form-control" id="searchItineraryInput" placeholder="Type keyword (e.g. Day 2, 4WD, Nizwa)...">
+                                <button type="button" id="searchItineraryBtn" class="btn btn-primary">Search</button>
+                                <button type="button" id="resetItineraryBtn" class="btn btn-outline-secondary">Reset</button>
+                            </div>
+                        </div>
+                        <div id="itinerarySearchStatus" class="small text-muted">
+                            Showing all itinerary stops.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Empty Table Populated Dynamically by JavaScript -->
+        <div class="card border-0 shadow-sm">
+            <div class="card-header bg-white py-3 d-flex justify-content-between align-items-center">
+                <h2 class="h5 fw-bold mb-0">3-Day Heritage & Mountain Expedition Schedule</h2>
+                <span id="itineraryCountBadge" class="badge text-bg-success">0 stops</span>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped table-hover align-middle mb-0" id="itinerariesTable">
+                        <thead class="table-dark">
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Day</th>
+                                <th scope="col">Time Slot</th>
+                                <th scope="col">Activity / Destination</th>
+                                <th scope="col">Governorate</th>
+                                <th scope="col">Notes & Advice</th>
+                            </tr>
+                        </thead>
+                        <tbody id="itinerariesTableBody">
+                            <!-- Rows are dynamically inserted by JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white mt-auto py-3 text-center">
+        <div class="container">
+            <p class="mb-0 small text-light">&copy; 2026 Oman Treasures - BAM-Web Crafters. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Dynamic Itineraries JavaScript -->
+    <script>
+        /**
+         * Constructor function defining an ItineraryStop object type
+         * with multiple properties matching the itinerary schedule columns.
+         */
+        function ItineraryStop(day, timeSlot, activity, governorate, notes) {
+            this.day = day;
+            this.timeSlot = timeSlot;
+            this.activity = activity;
+            this.governorate = governorate;
+            this.notes = notes;
+        }
+
+        // Array initialized with actual itinerary data from Part 2
+        const itinerariesArray = [
+            new ItineraryStop("Day 1", "08:00 AM - 11:00 AM", "Nizwa Fort & Souq", "A'Dakhiliyah", "Explore traditional crafts and Omani halwa."),
+            new ItineraryStop("Day 1", "11:30 AM - 02:00 PM", "Falaj Daris Park", "A'Dakhiliyah", "UNESCO heritage site picnic break."),
+            new ItineraryStop("Day 1", "03:00 PM - 06:00 PM", "Birkat Al Mouz Ruins", "A'Dakhiliyah", "Walk through ancient clay houses and palm groves."),
+            new ItineraryStop("Day 2", "09:00 AM - 01:00 PM", "Jebel Akhdar Terraced Farms", "A'Dakhiliyah", "4WD vehicle required. Enjoy cool climate and fruit orchards."),
+            new ItineraryStop("Day 2", "02:00 PM - 06:00 PM", "Diana's Point Viewpoint", "A'Dakhiliyah", "Breathtaking mountain canyon photography."),
+            new ItineraryStop("Day 3", "08:00 AM - 02:00 PM", "Jebel Shams (Balcony Walk)", "A'Dakhiliyah", "Hike along the Grand Canyon of Arabia."),
+            new ItineraryStop("Day 3", "03:00 PM - 07:00 PM", "Misfat Al Abriyeen", "A'Dakhiliyah", "Relaxing sunset walk in a traditional mountain village.")
+        ];
+
+        /**
+         * Dynamically displays itinerary records from a given array
+         * into the empty tbody of #itinerariesTable.
+         */
+        function renderItinerariesTable(stopsArray) {
+            const tbody = document.getElementById("itinerariesTableBody");
+            const countBadge = document.getElementById("itineraryCountBadge");
+            tbody.innerHTML = ""; // Clear existing rows before rendering
+
+            if (stopsArray.length === 0) {
+                const emptyRow = document.createElement("tr");
+                const emptyCell = document.createElement("td");
+                emptyCell.colSpan = 6;
+                emptyCell.className = "text-center text-muted py-4";
+                emptyCell.textContent = "No matching itinerary stops found.";
+                emptyRow.appendChild(emptyCell);
+                tbody.appendChild(emptyRow);
+            } else {
+                stopsArray.forEach((stop, index) => {
+                    const row = document.createElement("tr");
+
+                    const indexCell = document.createElement("td");
+                    indexCell.textContent = index + 1;
+
+                    const dayCell = document.createElement("td");
+                    const dayBadge = document.createElement("span");
+                    dayBadge.className = "badge text-bg-secondary";
+                    dayBadge.textContent = stop.day;
+                    dayCell.appendChild(dayBadge);
+
+                    const timeCell = document.createElement("td");
+                    timeCell.textContent = stop.timeSlot;
+
+                    const activityCell = document.createElement("td");
+                    const strongActivity = document.createElement("strong");
+                    strongActivity.textContent = stop.activity;
+                    activityCell.appendChild(strongActivity);
+
+                    const govCell = document.createElement("td");
+                    govCell.textContent = stop.governorate;
+
+                    const notesCell = document.createElement("td");
+                    notesCell.textContent = stop.notes;
+
+                    row.appendChild(indexCell);
+                    row.appendChild(dayCell);
+                    row.appendChild(timeCell);
+                    row.appendChild(activityCell);
+                    row.appendChild(govCell);
+                    row.appendChild(notesCell);
+
+                    tbody.appendChild(row);
+                });
+            }
+
+            // Update stop counter badge
+            countBadge.textContent = `${stopsArray.length} ${stopsArray.length === 1 ? "stop" : "stops"}`;
+        }
+
+        // Handle adding a new ItineraryStop to itinerariesArray and updating the table
+        const addItineraryForm = document.getElementById("addItineraryForm");
+        addItineraryForm.addEventListener("submit", function (event) {
+            event.preventDefault();
+            event.stopPropagation();
+
+            if (!addItineraryForm.checkValidity()) {
+                addItineraryForm.classList.add("was-validated");
+                return;
+            }
+
+            const dayVal = document.getElementById("itinDay").value.trim();
+            const timeVal = document.getElementById("itinTimeSlot").value.trim();
+            const activityVal = document.getElementById("itinActivity").value.trim();
+            const govVal = document.getElementById("itinGovernorate").value.trim();
+            const notesVal = document.getElementById("itinNotes").value.trim();
+
+            // Instantiate a new ItineraryStop object and push to array
+            const newStop = new ItineraryStop(dayVal, timeVal, activityVal, govVal, notesVal);
+            itinerariesArray.push(newStop);
+
+            // Re-render full table and reset form state
+            renderItinerariesTable(itinerariesArray);
+            document.getElementById("searchItineraryInput").value = "";
+            document.getElementById("itinerarySearchStatus").textContent =
+                `Added "${activityVal}" successfully. Showing all ${itinerariesArray.length} stops.`;
+            addItineraryForm.reset();
+            addItineraryForm.classList.remove("was-validated");
+        });
+
+        // Handle searching across itinerariesArray
+        function searchItineraries() {
+            const query = document.getElementById("searchItineraryInput").value.trim().toLowerCase();
+            const statusEl = document.getElementById("itinerarySearchStatus");
+
+            if (query === "") {
+                renderItinerariesTable(itinerariesArray);
+                statusEl.textContent = `Showing all ${itinerariesArray.length} itinerary stops.`;
+                return;
+            }
+
+            const filtered = itinerariesArray.filter((stop) =>
+                stop.day.toLowerCase().includes(query) ||
+                stop.timeSlot.toLowerCase().includes(query) ||
+                stop.activity.toLowerCase().includes(query) ||
+                stop.governorate.toLowerCase().includes(query) ||
+                stop.notes.toLowerCase().includes(query)
+            );
+
+            renderItinerariesTable(filtered);
+            statusEl.textContent = `Found ${filtered.length} result(s) for "${query}".`;
+        }
+
+        document.getElementById("searchItineraryBtn").addEventListener("click", searchItineraries);
+        document.getElementById("searchItineraryInput").addEventListener("keyup", function (event) {
+            if (event.key === "Enter") {
+                searchItineraries();
+            }
+        });
+
+        document.getElementById("resetItineraryBtn").addEventListener("click", function () {
+            document.getElementById("searchItineraryInput").value = "";
+            renderItinerariesTable(itinerariesArray);
+            document.getElementById("itinerarySearchStatus").textContent =
+                `Showing all ${itinerariesArray.length} itinerary stops.`;
+        });
+
+        // Initial table render on page load
+        renderItinerariesTable(itinerariesArray);
+    </script>
+</body>
+</html>

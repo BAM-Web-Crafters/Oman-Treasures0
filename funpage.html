@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fun Page - Oman Treasures</title>
+    <!-- Bootstrap 5 CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light text-dark d-flex flex-column min-vh-100">
+
+    <!-- Responsive Navigation Bar -->
+    <!-- Responsive Navigation Bar (Unified 11 Links, Single-Line Labels) -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top shadow-sm">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center gap-2 fw-bold text-warning text-nowrap" href="index.html">
+                <img src="images/logo.png" alt="Oman Treasures Logo" width="38" height="38" class="rounded-circle bg-white p-1">
+                <span>Oman Treasures</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="mainNavbar">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center gap-lg-1">
+                    <li class="nav-item"><a class="nav-link text-nowrap px-lg-2 small" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link text-nowrap px-lg-2 small" href="destinations.html">Destinations</a></li>
+                    <li class="nav-item"><a class="nav-link text-nowrap px-lg-2 small" href="gallery.html">Gallery</a></li>
+                    <li class="nav-item"><a class="nav-link text-nowrap px-lg-2 small" href="itineraries.html">Itineraries</a></li>
+                    <li class="nav-item"><a class="nav-link text-nowrap px-lg-2 small" href="forms.html">Forms</a></li>
+                    <li class="nav-item"><a class="nav-link text-nowrap px-lg-2 small" href="add-gem.html">Add Gem</a></li>
+                    <li class="nav-item"><a class="nav-link text-nowrap px-lg-2 small" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link text-nowrap px-lg-2 small" href="contact.html">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link text-nowrap px-lg-2 small text-info fw-semibold" href="questionnaire.html">Questionnaire</a></li>
+                    <li class="nav-item"><a class="nav-link text-nowrap px-lg-2 small text-info fw-semibold" href="calculate.html">Calculator</a></li>
+                    <li class="nav-item"><a class="nav-link text-nowrap px-lg-2 small text-info fw-semibold" active href="funpage.html">Fun Page</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container my-4 flex-grow-1">
+        <!-- Page Header -->
+        <div class="p-4 mb-4 rounded-3 bg-white border shadow-sm d-flex flex-wrap justify-content-between align-items-center gap-3">
+            <div>
+                <h1 class="h2 fw-bold text-primary mb-1">Oman Treasures Explorer Challenge</h1>
+                <p class="text-secondary mb-0">
+                    Test your knowledge of Omani hidden gems and governorates using dynamic interactive cards.
+                </p>
+            </div>
+            <div class="d-flex gap-2">
+                <span id="scoreBadge" class="badge text-bg-success fs-6 px-3 py-2">Score: 0</span>
+                <span id="roundBadge" class="badge text-bg-primary fs-6 px-3 py-2">Round: 1 / 5</span>
+            </div>
+        </div>
+
+        <!-- Interactive Game Container -->
+        <div class="row g-4">
+            <!-- Clue & Landmark Card -->
+            <div class="col-lg-5">
+                <div class="card border-0 shadow-sm h-100">
+                    <img id="clueImage" src="images/bimmah-sinkhole.jpg" alt="Omani Clue Landmark" class="card-img-top object-fit-cover" height="240">
+                    <div class="card-body">
+                        <span class="badge text-bg-warning text-dark mb-2">Clue Card</span>
+                        <h2 id="clueTitle" class="h4 fw-bold mb-2">Turquoise Sinkhole</h2>
+                        <p id="clueDescription" class="text-secondary mb-3">
+                            A dramatic natural limestone sinkhole filled with clear turquoise water near the coast.
+                        </p>
+                        <div class="d-flex gap-2">
+                            <button type="button" id="hintBtn" class="btn btn-outline-info btn-sm fw-semibold">Show Hint</button>
+                            <button type="button" id="restartGameBtn" class="btn btn-outline-secondary btn-sm">Restart Game</button>
+                        </div>
+                        <div id="hintBox" class="alert alert-info mt-3 mb-0 d-none small"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dynamic Choices & Live Feedback Area -->
+            <div class="col-lg-7">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-header bg-dark text-white fw-semibold py-3">
+                        Select the Matching Omani Treasure & Governorate
+                    </div>
+                    <div class="card-body p-4 d-flex flex-column justify-content-between">
+                        <div>
+                            <p class="fw-semibold mb-3">Click the card that matches the clue on the left:</p>
+                            <!-- Choice buttons are dynamically generated via DOM manipulation -->
+                            <div id="choicesContainer" class="row g-3"></div>
+                        </div>
+
+                        <div class="mt-4">
+                            <div id="gameFeedback" class="alert alert-secondary mb-3" role="alert">
+                                Choose an option above to earn 10 points!
+                            </div>
+                            <div class="d-flex justify-content-end">
+                                <button type="button" id="nextRoundBtn" class="btn btn-primary fw-semibold px-4" disabled>
+                                    Next Challenge
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white mt-auto py-3 text-center">
+        <div class="container">
+            <p class="mb-0 small text-light">&copy; 2026 Oman Treasures - BAM-Web Crafters. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Dynamic HTML Game Script with Full Comments -->
+    <script>
+        // Game challenges dataset representing hidden gems and governorates from the project
+        const gameChallenges = [
+            {
+                clueTitle: "Natural Limestone Sinkhole",
+                clueDescription: "Famous for crystal-clear turquoise water in a natural rock depression.",
+                image: "images/bimmah-sinkhole.jpg",
+                hint: "Located in South A'Sharqiyah governorate.",
+                correctAnswer: "Bimmah Sinkhole (South A'Sharqiyah)",
+                options: [
+                    "Bimmah Sinkhole (South A'Sharqiyah)",
+                    "Mutrah Souq (Muscat)",
+                    "Sharqiyah Sands (North A'Sharqiyah)",
+                    "Khasab Fjords (Musandam)"
+                ]
+            },
+            {
+                clueTitle: "Arabia's Grand Canyon Peak",
+                clueDescription: "The highest mountain peak in Oman offering deep canyon overlooks and hiking trails.",
+                image: "images/jebel-shams.jpg",
+                hint: "Part of the A'Dakhiliyah governorate mountain range.",
+                correctAnswer: "Jebel Shams (A'Dakhiliyah)",
+                options: [
+                    "Wadi Darbat (Dhofar)",
+                    "Jebel Shams (A'Dakhiliyah)",
+                    "Sohar Fort (North Al Batinah)",
+                    "Ibri Castle (A'Dhahirah)"
+                ]
+            },
+            {
+                clueTitle: "Golden Desert Dunes",
+                clueDescription: "Expansive rolling sand dunes popular for desert camping and sunset views.",
+                image: "images/wahiba-sands.jpg",
+                hint: "Found in North A'Sharqiyah.",
+                correctAnswer: "Sharqiyah Sands (North A'Sharqiyah)",
+                options: [
+                    "Falaj Daris (A'Dakhiliyah)",
+                    "Nakhal Fort (South Al Batinah)",
+                    "Sharqiyah Sands (North A'Sharqiyah)",
+                    "Al Khandaq Fort (Al Buraimi)"
+                ]
+            },
+            {
+                clueTitle: "Lush Southern Valley & Waterfalls",
+                clueDescription: "Known for seasonal waterfalls, green banks, and peaceful valley scenery.",
+                image: "images/wadi-darbat.jpg",
+                hint: "Situated in the southern Dhofar governorate.",
+                correctAnswer: "Wadi Darbat (Dhofar)",
+                options: [
+                    "Wadi Darbat (Dhofar)",
+                    "Wadi Shab (South A'Sharqiyah)",
+                    "Duqm Rock Garden (Al Wusta)",
+                    "Oman Botanic Garden (Muscat)"
+                ]
+            },
+            {
+                clueTitle: "Historic Traditional Market",
+                clueDescription: "One of the oldest traditional souqs featuring incense, silver, and heritage lanes.",
+                image: "images/mutrah-souq.jpg",
+                hint: "Located along the corniche in Muscat.",
+                correctAnswer: "Mutrah Souq (Muscat)",
+                options: [
+                    "Jebel Akhdar (A'Dakhiliyah)",
+                    "Ain Al Kasfah (South Al Batinah)",
+                    "Mutrah Souq (Muscat)",
+                    "Taeq Cave (Dhofar)"
+                ]
+            }
+        ];
+
+        // Track current game state variables
+        let currentRoundIndex = 0;
+        let playerScore = 0;
+        let roundAnswered = false;
+
+        /**
+         * Dynamically updates the clue card and builds interactive option buttons
+         * inside #choicesContainer using DOM element creation.
+         */
+        function renderChallengeRound() {
+            const roundData = gameChallenges[currentRoundIndex];
+            roundAnswered = false;
+
+            // Update header badges
+            document.getElementById("roundBadge").textContent =
+                `Round: ${currentRoundIndex + 1} / ${gameChallenges.length}`;
+            document.getElementById("scoreBadge").textContent = `Score: ${playerScore}`;
+
+            // Update clue card content dynamically
+            document.getElementById("clueImage").src = roundData.image;
+            document.getElementById("clueImage").alt = roundData.clueTitle;
+            document.getElementById("clueTitle").textContent = roundData.clueTitle;
+            document.getElementById("clueDescription").textContent = roundData.clueDescription;
+
+            // Hide previous hint and reset feedback/next button
+            const hintBox = document.getElementById("hintBox");
+            hintBox.classList.add("d-none");
+            hintBox.textContent = "";
+
+            const feedbackEl = document.getElementById("gameFeedback");
+            feedbackEl.className = "alert alert-secondary mb-3";
+            feedbackEl.textContent = "Choose an option above to earn 10 points!";
+
+            const nextBtn = document.getElementById("nextRoundBtn");
+            nextBtn.disabled = true;
+            nextBtn.textContent =
+                currentRoundIndex === gameChallenges.length - 1 ? "Finish Game" : "Next Challenge";
+
+            // Clear old choice buttons and create new ones dynamically
+            const choicesContainer = document.getElementById("choicesContainer");
+            choicesContainer.innerHTML = "";
+
+            roundData.options.forEach((optionText) => {
+                const colDiv = document.createElement("div");
+                colDiv.className = "col-md-6";
+
+                const choiceBtn = document.createElement("button");
+                choiceBtn.type = "button";
+                choiceBtn.className = "btn btn-outline-dark w-100 py-3 px-3 text-start fw-semibold";
+                choiceBtn.textContent = optionText;
+
+                // Attach click event to evaluate selection
+                choiceBtn.addEventListener("click", function () {
+                    evaluateChoice(choiceBtn, optionText, roundData.correctAnswer);
+                });
+
+                colDiv.appendChild(choiceBtn);
+                choicesContainer.appendChild(colDiv);
+            });
+        }
+
+        /**
+         * Evaluates the user's selected choice, updates score and feedback,
+         * and disables remaining option buttons for the current round.
+         */
+        function evaluateChoice(clickedButton, selectedOption, correctAnswer) {
+            if (roundAnswered) {
+                return; // Prevent multiple answers in the same round
+            }
+
+            roundAnswered = true;
+            const feedbackEl = document.getElementById("gameFeedback");
+            const allChoiceButtons = document.querySelectorAll("#choicesContainer button");
+
+            // Disable all option buttons once an answer is chosen
+            allChoiceButtons.forEach((btn) => {
+                btn.disabled = true;
+                if (btn.textContent === correctAnswer) {
+                    btn.className = "btn btn-success w-100 py-3 px-3 text-start fw-semibold";
+                }
+            });
+
+            if (selectedOption === correctAnswer) {
+                playerScore += 10;
+                document.getElementById("scoreBadge").textContent = `Score: ${playerScore}`;
+                clickedButton.className = "btn btn-success w-100 py-3 px-3 text-start fw-semibold";
+                feedbackEl.className = "alert alert-success mb-3";
+                feedbackEl.textContent = `Correct! "${correctAnswer}" (+10 points).`;
+            } else {
+                clickedButton.className = "btn btn-danger w-100 py-3 px-3 text-start fw-semibold";
+                feedbackEl.className = "alert alert-danger mb-3";
+                feedbackEl.textContent = `Not quite! The right answer is "${correctAnswer}".`;
+            }
+
+            document.getElementById("nextRoundBtn").disabled = false;
+        }
+
+        // Reveal hint for the current round
+        document.getElementById("hintBtn").addEventListener("click", function () {
+            const hintBox = document.getElementById("hintBox");
+            hintBox.textContent = `Hint: ${gameChallenges[currentRoundIndex].hint}`;
+            hintBox.classList.remove("d-none");
+        });
+
+        // Advance to next round or display final summary
+        document.getElementById("nextRoundBtn").addEventListener("click", function () {
+            if (currentRoundIndex < gameChallenges.length - 1) {
+                currentRoundIndex++;
+                renderChallengeRound();
+            } else {
+                const maxScore = gameChallenges.length * 10;
+                const choicesContainer = document.getElementById("choicesContainer");
+                choicesContainer.innerHTML = "";
+
+                const summaryCard = document.createElement("div");
+                summaryCard.className = "col-12";
+                summaryCard.innerHTML = `
+                    <div class="p-4 rounded bg-light border text-center">
+                        <h3 class="h4 fw-bold text-primary">Challenge Completed!</h3>
+                        <p class="lead mb-2">Your Final Score: <strong>${playerScore} / ${maxScore}</strong></p>
+                        <p class="text-muted mb-3">Explore more places in the Gallery or click Restart Game to play again.</p>
+                        <a href="gallery.html" class="btn btn-outline-primary btn-sm">Go to Gallery</a>
+                    </div>
+                `;
+                choicesContainer.appendChild(summaryCard);
+
+                document.getElementById("gameFeedback").className = "alert alert-primary mb-3";
+                document.getElementById("gameFeedback").textContent =
+                    "Great job exploring Oman Treasures! Click 'Restart Game' anytime for another run.";
+                document.getElementById("nextRoundBtn").disabled = true;
+            }
+        });
+
+        // Restart game from round 1 and reset score
+        document.getElementById("restartGameBtn").addEventListener("click", function () {
+            currentRoundIndex = 0;
+            playerScore = 0;
+            renderChallengeRound();
+        });
+
+        // Start first round automatically on page load
+        renderChallengeRound();
+    </script>
+</body>
+</html>

@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Destinations - Oman Treasures</title>
+    <!-- Bootstrap 5 CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light text-dark d-flex flex-column min-vh-100">
+
+    <!-- Responsive Navigation Bar -->
+    <!-- Responsive Navigation Bar (Unified 11 Links, Single-Line Labels) -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top shadow-sm">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center gap-2 fw-bold text-warning text-nowrap" href="index.html">
+                <img src="images/logo.png" alt="Oman Treasures Logo" width="38" height="38" class="rounded-circle bg-white p-1">
+                <span>Oman Treasures</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="mainNavbar">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center gap-lg-1">
+                    <li class="nav-item"><a class="nav-link text-nowrap px-lg-2 small" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link text-nowrap px-lg-2 small" active href="destinations.html">Destinations</a></li>
+                    <li class="nav-item"><a class="nav-link text-nowrap px-lg-2 small" href="gallery.html">Gallery</a></li>
+                    <li class="nav-item"><a class="nav-link text-nowrap px-lg-2 small" href="itineraries.html">Itineraries</a></li>
+                    <li class="nav-item"><a class="nav-link text-nowrap px-lg-2 small" href="forms.html">Forms</a></li>
+                    <li class="nav-item"><a class="nav-link text-nowrap px-lg-2 small" href="add-gem.html">Add Gem</a></li>
+                    <li class="nav-item"><a class="nav-link text-nowrap px-lg-2 small" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link text-nowrap px-lg-2 small" href="contact.html">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link text-nowrap px-lg-2 small text-info fw-semibold" href="questionnaire.html">Questionnaire</a></li>
+                    <li class="nav-item"><a class="nav-link text-nowrap px-lg-2 small text-info fw-semibold" href="calculate.html">Calculator</a></li>
+                    <li class="nav-item"><a class="nav-link text-nowrap px-lg-2 small text-info fw-semibold" href="funpage.html">Fun Page</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container my-4 flex-grow-1">
+        <!-- Page Header -->
+        <div class="p-4 mb-4 rounded-3 bg-white border shadow-sm">
+            <h1 class="h2 fw-bold text-primary mb-2">Explore Destinations by Category</h1>
+            <p class="text-secondary mb-0">
+                Browse top Omani destinations dynamically, search by keyword, or add a new destination entry to the table.
+            </p>
+        </div>
+
+        <!-- Add Destination & Search Forms Row -->
+        <div class="row g-4 mb-4">
+            <!-- Add New Destination Form -->
+            <div class="col-lg-7">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-header bg-primary text-white fw-semibold">
+                        Add New Destination
+                    </div>
+                    <div class="card-body">
+                        <form id="addDestinationForm" class="row g-3 needs-validation" novalidate>
+                            <div class="col-md-6">
+                                <label for="destCategory" class="form-label fw-semibold">Category</label>
+                                <input type="text" class="form-control" id="destCategory" placeholder="e.g. Mountain, Wadi, Desert" required>
+                                <div class="invalid-feedback">Please enter a category.</div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="destGovernorate" class="form-label fw-semibold">Governorate</label>
+                                <input type="text" class="form-control" id="destGovernorate" placeholder="e.g. A'Dakhiliyah, Dhofar" required>
+                                <div class="invalid-feedback">Please enter a governorate.</div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="destName" class="form-label fw-semibold">Key Destination</label>
+                                <input type="text" class="form-control" id="destName" placeholder="e.g. Jebel Akhdar" required>
+                                <div class="invalid-feedback">Please enter the destination name.</div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="destExperience" class="form-label fw-semibold">Best Experience</label>
+                                <input type="text" class="form-control" id="destExperience" placeholder="e.g. Terraced Farms & Hiking" required>
+                                <div class="invalid-feedback">Please describe the best experience.</div>
+                            </div>
+                            <div class="col-12">
+                                <button type="submit" class="btn btn-success fw-semibold">Add to Destinations Table</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Search Destinations Form -->
+            <div class="col-lg-5">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-header bg-dark text-white fw-semibold">
+                        Search Destinations
+                    </div>
+                    <div class="card-body d-flex flex-column justify-content-between">
+                        <div>
+                            <label for="searchDestinationInput" class="form-label fw-semibold">
+                                Search by Category, Governorate, Destination, or Experience
+                            </label>
+                            <div class="input-group mb-3">
+                                <input type="text" class="form-control" id="searchDestinationInput" placeholder="Type keyword (e.g. Wadi, Muscat)...">
+                                <button type="button" id="searchDestinationBtn" class="btn btn-primary">Search</button>
+                                <button type="button" id="resetDestinationBtn" class="btn btn-outline-secondary">Reset</button>
+                            </div>
+                        </div>
+                        <div id="destinationSearchStatus" class="small text-muted">
+                            Showing all destinations.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Empty Table Populated Dynamically by JavaScript -->
+        <div class="card border-0 shadow-sm">
+            <div class="card-header bg-white py-3 d-flex justify-content-between align-items-center">
+                <h2 class="h5 fw-bold mb-0">Top Destinations Overview Table</h2>
+                <span id="destinationCountBadge" class="badge text-bg-primary">0 items</span>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped table-hover align-middle mb-0" id="destinationsTable">
+                        <thead class="table-dark">
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Category</th>
+                                <th scope="col">Governorate</th>
+                                <th scope="col">Key Destination</th>
+                                <th scope="col">Best Experience</th>
+                            </tr>
+                        </thead>
+                        <tbody id="destinationsTableBody">
+                            <!-- Rows are dynamically inserted by JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white mt-auto py-3 text-center">
+        <div class="container">
+            <p class="mb-0 small text-light">&copy; 2026 Oman Treasures - BAM-Web Crafters. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Dynamic Destinations JavaScript -->
+    <script>
+        /**
+         * Constructor function defining a Destination object type
+         * with multiple properties matching the destinations table columns.
+         */
+        function DestinationItem(category, governorate, destination, experience) {
+            this.category = category;
+            this.governorate = governorate;
+            this.destination = destination;
+            this.experience = experience;
+        }
+
+        // Array initialized with actual destinations data from Part 2
+        const destinationsArray = [
+            new DestinationItem("Mountain", "A'Dakhiliyah", "Jebel Shams", "Hiking & Canyon Views"),
+            new DestinationItem("Coastal / Wadi", "South A'Sharqiyah", "Wadi Shab", "Swimming & Cave Exploration"),
+            new DestinationItem("Heritage", "Muscat", "Mutrah Souq", "Traditional Shopping & History"),
+            new DestinationItem("Desert", "North A'Sharqiyah", "Sharqiyah Sands", "Desert Camping & Dune Bashing")
+        ];
+
+        /**
+         * Dynamically displays destination records from a given array
+         * into the empty tbody of #destinationsTable.
+         */
+        function renderDestinationsTable(itemsArray) {
+            const tbody = document.getElementById("destinationsTableBody");
+            const countBadge = document.getElementById("destinationCountBadge");
+            tbody.innerHTML = ""; // Clear existing table body rows before rendering
+
+            if (itemsArray.length === 0) {
+                const emptyRow = document.createElement("tr");
+                const emptyCell = document.createElement("td");
+                emptyCell.colSpan = 5;
+                emptyCell.className = "text-center text-muted py-4";
+                emptyCell.textContent = "No matching destinations found.";
+                emptyRow.appendChild(emptyCell);
+                tbody.appendChild(emptyRow);
+            } else {
+                itemsArray.forEach((item, index) => {
+                    const row = document.createElement("tr");
+
+                    const indexCell = document.createElement("td");
+                    indexCell.textContent = index + 1;
+
+                    const categoryCell = document.createElement("td");
+                    categoryCell.textContent = item.category;
+
+                    const govCell = document.createElement("td");
+                    govCell.textContent = item.governorate;
+
+                    const destCell = document.createElement("td");
+                    const boldName = document.createElement("strong");
+                    boldName.textContent = item.destination;
+                    destCell.appendChild(boldName);
+
+                    const expCell = document.createElement("td");
+                    expCell.textContent = item.experience;
+
+                    row.appendChild(indexCell);
+                    row.appendChild(categoryCell);
+                    row.appendChild(govCell);
+                    row.appendChild(destCell);
+                    row.appendChild(expCell);
+
+                    tbody.appendChild(row);
+                });
+            }
+
+            // Update item counter badge
+            countBadge.textContent = `${itemsArray.length} ${itemsArray.length === 1 ? "item" : "items"}`;
+        }
+
+        // Handle adding a new DestinationItem to destinationsArray and updating the table
+        const addDestinationForm = document.getElementById("addDestinationForm");
+        addDestinationForm.addEventListener("submit", function (event) {
+            event.preventDefault();
+            event.stopPropagation();
+
+            if (!addDestinationForm.checkValidity()) {
+                addDestinationForm.classList.add("was-validated");
+                return;
+            }
+
+            const categoryVal = document.getElementById("destCategory").value.trim();
+            const govVal = document.getElementById("destGovernorate").value.trim();
+            const destVal = document.getElementById("destName").value.trim();
+            const expVal = document.getElementById("destExperience").value.trim();
+
+            // Instantiate a new DestinationItem object and push to array
+            const newDestination = new DestinationItem(categoryVal, govVal, destVal, expVal);
+            destinationsArray.push(newDestination);
+
+            // Re-render full table and reset form state
+            renderDestinationsTable(destinationsArray);
+            document.getElementById("searchDestinationInput").value = "";
+            document.getElementById("destinationSearchStatus").textContent =
+                `Added "${destVal}" successfully. Showing all ${destinationsArray.length} destinations.`;
+            addDestinationForm.reset();
+            addDestinationForm.classList.remove("was-validated");
+        });
+
+        // Handle searching across destinationsArray
+        function searchDestinations() {
+            const query = document.getElementById("searchDestinationInput").value.trim().toLowerCase();
+            const statusEl = document.getElementById("destinationSearchStatus");
+
+            if (query === "") {
+                renderDestinationsTable(destinationsArray);
+                statusEl.textContent = `Showing all ${destinationsArray.length} destinations.`;
+                return;
+            }
+
+            const filtered = destinationsArray.filter((item) =>
+                item.category.toLowerCase().includes(query) ||
+                item.governorate.toLowerCase().includes(query) ||
+                item.destination.toLowerCase().includes(query) ||
+                item.experience.toLowerCase().includes(query)
+            );
+
+            renderDestinationsTable(filtered);
+            statusEl.textContent = `Found ${filtered.length} result(s) for "${query}".`;
+        }
+
+        document.getElementById("searchDestinationBtn").addEventListener("click", searchDestinations);
+        document.getElementById("searchDestinationInput").addEventListener("keyup", function (event) {
+            if (event.key === "Enter") {
+                searchDestinations();
+            }
+        });
+
+        document.getElementById("resetDestinationBtn").addEventListener("click", function () {
+            document.getElementById("searchDestinationInput").value = "";
+            renderDestinationsTable(destinationsArray);
+            document.getElementById("destinationSearchStatus").textContent =
+                `Showing all ${destinationsArray.length} destinations.`;
+        });
+
+        // Initial table render on page load
+        renderDestinationsTable(destinationsArray);
+    </script>
+</body>
+</html>
